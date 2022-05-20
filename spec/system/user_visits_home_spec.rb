@@ -7,19 +7,19 @@ describe 'Usuário visita tela inicial' do
 		#Act
 		visit root_path
 		#Assert
-		expect(page).to have_link('Entrar')
 		expect(page).to have_content('Sistema de Logística de Ecommerce')
 		expect(page).to have_content('Rastreamento de Entrega')
+		expect(page).to have_link('Entrar')
 	end
 
 	it 'logado como admin' do
 		#Arrange
 		admin_gen = Admin.create!(email: 'administrador_generico@sistemadefrete.com.br', password: 'password')
 		#Act
-		login_as(admin_gen)
+		login_as(admin_gen, scope: :admin)
 		visit root_path
 		#Assert
-		expect(page).to have_link('Sair')
+		expect(page).to have_button('Sair')
 		expect(page).to have_content('Adicionar transportadora')
 		expect(page).to have_content('Criar nova ordem de serviço')
 		expect(page).to have_content('Transportadoras')
@@ -33,6 +33,7 @@ describe 'Usuário visita tela inicial' do
 		login_as(user_gen)
 		visit root_path
 		#Assert
+		expect(page).to have_button('Sair')
 		expect(page).to have_content('Visualizar veículos')
 		expect(page).to have_content('Cadastrar novo veículo')
 		expect(page).to have_content('Configurar preços')

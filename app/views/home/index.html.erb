@@ -1,0 +1,16 @@
+<h1>Sistema de Logística de Ecommerce</h1>
+<h4><%= I18n.localize(Date.today) %></h4>
+
+<% if admin_signed_in? %>
+  <%= render 'admin' %>
+<% elsif user_signed_in? %>
+  <%= render 'user' %>
+<% else %>
+  <h3>Rastreamento de Entrega</h3>
+<% end %>
+
+
+
+
+
+
