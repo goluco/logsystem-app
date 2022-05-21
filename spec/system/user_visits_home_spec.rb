@@ -20,10 +20,9 @@ describe 'Usuário visita tela inicial' do
 		visit root_path
 		#Assert
 		expect(page).to have_button('Sair')
-		expect(page).to have_content('Adicionar transportadora')
-		expect(page).to have_content('Criar nova ordem de serviço')
-		expect(page).to have_content('Transportadoras')
-		expect(page).to have_content('Consulta de Preços')
+		expect(page).to have_content('Ambiente de consulta e cadastro de transportadoras e ordens de serviço')
+		expect(page).to have_content('administrador_generico@sistemadefrete.com.br')
+		
 	end
 
 	it 'logado como usuário' do
@@ -34,10 +33,7 @@ describe 'Usuário visita tela inicial' do
 		visit root_path
 		#Assert
 		expect(page).to have_button('Sair')
-		expect(page).to have_content('Visualizar veículos')
-		expect(page).to have_content('Cadastrar novo veículo')
-		expect(page).to have_content('Configurar preços')
-		expect(page).to have_content('Configurar prazos')
-		expect(page).to have_content('Visualizar ordens de serviço')
+		expect(page).to have_content('Ambiente de consulta e cadastro de preços, prazos e veículos, bem como recebimento e aceite de ordens de serviço')
+		expect(page).to have_content('usuario_generico@transportadoragenerica.com.br')
 	end
 end

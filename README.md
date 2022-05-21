@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Sistema de transportes para ecommerce. Projeto individual desenvolvido como parte do TreinaDev 8.
 
 * Ruby version
+  3.0.0
 
-* System dependencies
+* Rails version
+  7.0.3
 
-* Configuration
+* Testes
+  RSpec e Capybara
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Link p/ GitHub Projects:
+  https://github.com/goluco/logsystem-app/projects/
