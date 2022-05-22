@@ -1,0 +1,11 @@
+<h1>Lista de transportadoras disponíveis</h1>
+
+<% if @carriers.empty? %>
+  <p> Não existem transportadoras cadastradas. </p>
+<% else %>
+  <% @carriers.each do |c| %>
+    <ul>
+      <li><%= link_to c.trade_name, carrier_path(c.id) %></li>
+    </ul>
+  <% end %>
+<% end %>

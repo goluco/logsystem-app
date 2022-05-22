@@ -1,0 +1,33 @@
+<%= form_with(model: @carrier) do |form| %>
+  <div>
+	  <%= form.label :trade_name %>
+	  <%= form.text_field :trade_name %>
+	</div>
+	<div>
+	  <%= form.label :corporate_name %>
+	  <%= form.text_field :corporate_name %>
+	</div>
+	<div>
+	  <%= form.label :domain %>
+	  <%= form.text_field :domain %>
+	</div>
+	<div>
+	  <%= form.label :nif %>
+	  <%= form.number_field :nif %>
+	</div>
+	<div>
+	  <%= form.label :address %>
+	  <%= form.text_field :address %>
+	</div>
+	<div>
+	  <%= form.label :city %>
+	  <%= form.text_field :city %>
+	</div>
+	<div>
+	  <%= form.label :state %>
+	  <%= form.text_field :state %>
+	</div>
+	<div>
+	  <%= form.submit 'Enviar' %>
+	</div>
+<% end %>

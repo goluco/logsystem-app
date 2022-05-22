@@ -1,0 +1,12 @@
+<h2>Formulário de cadastro de nova transportadora</h2>
+
+<% if @carrier.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @carrier.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>

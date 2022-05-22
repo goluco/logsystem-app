@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      carrier: Transportadora
+    attributes:
+      carrier:
+        trade_name: "Nome fantasia"
+        corporate_name: "Razão social"
+        domain: "Domínio do e-mail"
+        nif: "CNPJ"
+        address: "Endereço"
+        city: "Cidade"
+        state: "Estado"
+      # will translate User attribute "login" as "Handle"
