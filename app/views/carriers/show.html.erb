@@ -6,3 +6,5 @@
 <h3>Endereço: <%= @carrier.address %> </h3>
 <h3>Cidade: <%= @carrier.city %> </h3>
 <h3>Estado: <%= @carrier.state %> </h3>
+
+<%= link_to 'Editar', edit_carrier_path(@carrier.id) %>

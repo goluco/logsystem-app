@@ -1,0 +1,12 @@
+<h1>Formulario de edição</h1>
+
+<% if @carrier.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @carrier.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>
