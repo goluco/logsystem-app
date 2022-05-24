@@ -13,6 +13,15 @@ RSpec.describe Admin, type: :model do
 
     it 'falso caso senha esteja em branco' do
       #Arrange
+      admin_generico = Admin.new(email: 'administrador_generico@sistemadefrete.com', password: '')
+      #Act
+      result = admin_generico.valid?
+      #Assert
+      expect(result).to eq(false)
+    end
+
+    it 'falso caso email seja diferente do exigido' do
+      #Arrange
       admin_generico = Admin.new(email: 'administrador_generico@gmail.com', password: '')
       #Act
       result = admin_generico.valid?

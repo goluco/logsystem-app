@@ -1,0 +1,29 @@
+<%= form_with(model: @vehicle) do |form| %>
+  <div>
+	  <%= form.label :license_plate %>
+	  <%= form.text_field :license_plate %>
+	</div>
+	<div>
+	  <%= form.label :brand %>
+	  <%= form.text_field :brand %>
+	</div>
+	<div>
+	  <%= form.label :model %>
+	  <%= form.text_field :model %>
+	</div>
+	<div>
+	  <%= form.label :fabrication_year %>
+	  <%= form.number_field :fabrication_year %>
+	</div>
+	<div>
+	  <%= form.label :max_capacity %>
+	  <%= form.text_field :max_capacity %>
+	</div>
+	<div>
+	  <%= form.label :carrier_id %>
+	  <%= form.collection_select :carrier_id, Carrier.where(trade_name: current_user.carrier.trade_name), :id, :trade_name %>
+	</div>
+	<div>
+	  <%= form.submit 'Enviar' %>
+	</div>
+<% end %>

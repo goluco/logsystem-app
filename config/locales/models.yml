@@ -3,6 +3,7 @@ pt-BR:
     models:
       carrier: Transportadora
       user: Usuário
+      vehicle: Veículo
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -17,4 +18,11 @@ pt-BR:
         email: "E-mail"
         password: "Senha"
         carrier_id: "Transportadora" 
+      vehicle:
+        license_plate: "Placa de identificação"
+        brand: "Marca"
+        model: "Modelo"
+        fabrication_year: "Ano de fabricação"
+        max_capacity: "Capacidade máxima de carga"
+        carrier_id: "Transportadora"  
       # will translate User attribute "login" as "Handle"

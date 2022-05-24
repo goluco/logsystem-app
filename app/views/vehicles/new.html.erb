@@ -1,0 +1,12 @@
+<h2>Formulário de cadastro de veículos</h2>
+
+<% if @vehicle.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @vehicle.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>

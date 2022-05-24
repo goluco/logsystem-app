@@ -34,7 +34,7 @@ describe 'Usuário visita tela inicial' do
 		visit root_path
 		#Assert
 		expect(page).to have_button('Sair')
-		expect(page).to have_content('Ambiente de consulta e cadastro de preços, prazos e veículos, bem como recebimento e aceite de ordens de serviço')
+		expect(page).to have_content('Ambiente de configuração de preços, prazos, veículos e ordens de serviço da transportadora TTLog')
 		expect(page).to have_content('usuario_generico@ttlog.com.br')
 	end
 end
