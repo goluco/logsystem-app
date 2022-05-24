@@ -27,13 +27,14 @@ describe 'Usuário visita tela inicial' do
 
 	it 'logado como usuário' do
 		#Arrange
-		user_gen = User.create!(email: 'usuario_generico@transportadoragenerica.com.br', password: 'password')
+		carrier = Carrier.create!(trade_name: 'TTLog', corporate_name: 'Telene Carvalho', domain: '@ttlog.com.br', nif: 12345678901234, address: 'Linha Vermelha, 2543', city: 'Salvador', state: 'BA')
+		user_gen = User.create!(name: 'Usuário genérico', email: 'usuario_generico@ttlog.com.br', password: 'password', carrier: carrier)
 		#Act
 		login_as(user_gen)
 		visit root_path
 		#Assert
 		expect(page).to have_button('Sair')
 		expect(page).to have_content('Ambiente de consulta e cadastro de preços, prazos e veículos, bem como recebimento e aceite de ordens de serviço')
-		expect(page).to have_content('usuario_generico@transportadoragenerica.com.br')
+		expect(page).to have_content('usuario_generico@ttlog.com.br')
 	end
 end

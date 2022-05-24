@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     models:
       carrier: Transportadora
+      user: Usuário
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -11,4 +12,9 @@ pt-BR:
         address: "Endereço"
         city: "Cidade"
         state: "Estado"
+      user:
+        name: "Nome"
+        email: "E-mail"
+        password: "Senha"
+        carrier_id: "Transportadora" 
       # will translate User attribute "login" as "Handle"
