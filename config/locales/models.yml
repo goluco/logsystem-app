@@ -6,6 +6,7 @@ pt-BR:
       vehicle: Veículo
       volume: Volume
       weight: Peso
+      price: Taxa por KM
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -28,9 +29,15 @@ pt-BR:
         max_capacity: "Capacidade máxima de carga"
         carrier_id: "Transportadora"  
       volume:
+        name: "Faixa por escrito"
         min: "Volume mínimo"
         max: "Volume máximo"  
       weight:
+        name: "Faixa por escrito"
         min: "Peso mínimo"
         max: "Peso máximo"  
+      price:
+        value: "Taxa por KM"
+        volume_id: "Volume"
+        weight_id: "Peso"
       # will translate User attribute "login" as "Handle"

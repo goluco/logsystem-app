@@ -1,3 +1,3 @@
 class Weight < ApplicationRecord
-    validates :min, :max, presence: true
+    validates :name, :min, :max, presence: true
 end

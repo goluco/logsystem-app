@@ -21,6 +21,6 @@ class VolumesController < ApplicationController
     end
 
     def volume_params
-      params.require(:volume).permit(:min, :max)
+      params.require(:volume).permit(:name, :min, :max)
     end
 end

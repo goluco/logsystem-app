@@ -4,11 +4,10 @@
   <p> Não existem preços cadastrados. </p>
 <% else %>
   <% @prices.each do |p| %>
-    <ul>
-      <li><%= link_to p.value %></li>
-    </ul>
+    <p>Preço: R$<%= p.value %> por KM | Volume: <%= Volume.find(p.volume_id).name %> | Peso: <%= Weight.find(p.weight_id).name %>KG</p> <br/>
   <% end %>
 <% end %>
 
-<%= link_to 'Adicionar intervalo de volume', new_volume_path %>
-<%= link_to 'Adicionar intervalo de peso', new_weight_path %>
+<%= link_to 'Adicionar intervalo de volume', new_volume_path %> <br/>
+<%= link_to 'Adicionar intervalo de peso', new_weight_path %> <br/>
+<%= link_to 'Adicionar taxa', new_price_path %>

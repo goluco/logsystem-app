@@ -1,11 +1,15 @@
 <%= form_with(model: @volume) do |form| %>
-  <div>
+    <div>
+	  <%= form.label :name %>
+	  <%= form.text_field :name %>
+	</div>
+	<div>
 	  <%= form.label :min %>
-	  <%= form.number_field :min %>
+	  <%= form.text_field :min %>
 	</div>
 	<div>
 	  <%= form.label :max %>
-	  <%= form.number_field :max %>
+	  <%= form.text_field :max %>
 	</div>
 	<div>
 	  <%= form.submit 'Enviar' %>

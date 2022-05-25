@@ -1,0 +1,21 @@
+<%= form_with(model: @price) do |form| %>
+  <div>
+	  <%= form.label :value %>
+	  <%= form.text_field :value %>
+	</div>
+	<div>
+	  <%= form.label :volume_id %>
+	  <%= form.collection_select :volume_id, Volume.order(:name), :id, :name %>
+	</div>
+    <div>
+	  <%= form.label :weight_id %>
+	  <%= form.collection_select :weight_id, Weight.order(:name), :id, :name %>
+	</div>
+    <div>
+	  <%= form.label :carrier_id, "Transportadora" %>
+	  <%= form.collection_select :carrier_id, Carrier.where(trade_name: current_user.carrier.trade_name), :id, :trade_name %>
+	</div>
+	<div>
+	  <%= form.submit 'Enviar' %>
+	</div>
+<% end %>

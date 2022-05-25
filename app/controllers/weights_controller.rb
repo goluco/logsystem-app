@@ -21,6 +21,6 @@ class WeightsController < ApplicationController
     end
 
     def weight_params
-      params.require(:weight).permit(:min, :max)
+      params.require(:weight).permit(:name, :min, :max)
     end
 end

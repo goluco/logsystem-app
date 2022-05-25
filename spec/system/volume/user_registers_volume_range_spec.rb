@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário configura intervalos de peso' do
+describe 'Usuário configura intervalos de volume' do
     it 'a partir da tela inicial' do
         #Arrange
         carrier = Carrier.create!(trade_name: 'TTLog', corporate_name: 'Telene Carvalho', domain: '@ttlog.com.br', nif: 12345678901234, address: 'Linha Vermelha, 2543', city: 'Salvador', state: 'BA')
@@ -9,10 +9,11 @@ describe 'Usuário configura intervalos de peso' do
         login_as(user_gen)
         visit root_path
         click_on 'Configurar preços'
-        click_on 'Adicionar intervalo de peso'
+        click_on 'Adicionar intervalo de volume'
         #Assert
-        expect(page).to have_field('Peso mínimo')
-        expect(page).to have_field('Peso máximo')
+        expect(page).to have_content('Faixa por escrito')
+        expect(page).to have_field('Volume mínimo')
+        expect(page).to have_field('Volume máximo')
     end
 
     it 'com sucesso' do
@@ -23,13 +24,14 @@ describe 'Usuário configura intervalos de peso' do
         login_as(user_gen)
         visit root_path
         click_on 'Configurar preços'
-        click_on 'Adicionar intervalo de peso'
-        fill_in 'Peso mínimo', with: 1
-        fill_in 'Peso máximo', with: 10
+        click_on 'Adicionar intervalo de volume'
+        fill_in 'Faixa por escrito', with: '0.001 a 0.005'
+        fill_in 'Volume mínimo', with: 0.001
+        fill_in 'Volume máximo', with: 0.005
         click_on 'Enviar'
         #Assert
         expect(current_path).to eq(root_path)
-        expect(page).to have_content('Intervalo de peso cadastrado com sucesso')
+        expect(page).to have_content('Intervalo de volume cadastrado com sucesso')
     end
 
     it 'com dados incompletos' do
@@ -40,11 +42,12 @@ describe 'Usuário configura intervalos de peso' do
         login_as(user_gen)
         visit root_path
         click_on 'Configurar preços'
-        click_on 'Adicionar intervalo de peso'
-        fill_in 'Peso mínimo', with: ''
-        fill_in 'Peso máximo', with: 10
+        click_on 'Adicionar intervalo de volume'
+        fill_in 'Faixa por escrito', with: '0.001 a 0.005'
+        fill_in 'Volume mínimo', with: ''
+        fill_in 'Volume máximo', with: 0.005
         click_on 'Enviar'
         #Assert
-        expect(page).to have_content('Peso mínimo não pode ficar em branco')
+        expect(page).to have_content('Volume mínimo não pode ficar em branco')
     end
 end

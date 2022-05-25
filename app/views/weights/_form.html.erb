@@ -1,5 +1,9 @@
 <%= form_with(model: @weight) do |form| %>
-  <div>
+    <div>
+	  <%= form.label :name %>
+	  <%= form.text_field :name %>
+	</div>
+	<div>
 	  <%= form.label :min %>
 	  <%= form.number_field :min %>
 	</div>
