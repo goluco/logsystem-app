@@ -2,7 +2,7 @@ class PricesController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update]
     
     def index
-        @prices = Price.all
+        @prices = Price.where(carrier_id: current_user.carrier.id)
     end
 
     def new
