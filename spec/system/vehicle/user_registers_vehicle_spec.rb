@@ -39,5 +39,23 @@ describe 'Usuário cadastra veículo' do
   end
 
   it 'com dados incompletos' do
+    #Arrange
+    carrier = Carrier.create!(trade_name: 'TTLog', corporate_name: 'Telene Carvalho', domain: '@ttlog.com.br', nif: 12345678901234, address: 'Linha Vermelha, 2543', city: 'Salvador', state: 'BA')
+		user_gen = User.create!(name: 'Usuário genérico', email: 'usuario_generico@ttlog.com.br', password: 'password', carrier: carrier)
+    #Act
+    login_as(user_gen)
+    visit root_path
+    click_on 'Cadastrar veículo'
+    fill_in 'Placa de identificação', with: ''
+    fill_in 'Marca', with: ''
+    fill_in 'Modelo', with: 'Ford Truck Road'
+    fill_in 'Ano de fabricação', with: '2018'
+    fill_in 'Capacidade máxima de carga', with: ''
+    select user_gen.carrier.trade_name, from: 'Transportadora'
+    click_on 'Enviar'
+    #Assert
+    expect(page).to have_content('Placa de identificação não pode ficar em branco')
+    expect(page).to have_content('Marca não pode ficar em branco')
+    expect(page).to have_content('Capacidade máxima de carga não pode ficar em branco')
   end
 end

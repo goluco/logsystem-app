@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :carriers
   resources :vehicles, only: [:new, :create]
+  resources :prices
+  resources :volumes, only: [:new, :create]
+  resources :weights, only: [:new, :create]
 end

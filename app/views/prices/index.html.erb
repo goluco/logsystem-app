@@ -1,0 +1,14 @@
+<h1>Listagem de preços</h1>
+
+<% if @prices.empty? %>
+  <p> Não existem preços cadastrados. </p>
+<% else %>
+  <% @prices.each do |p| %>
+    <ul>
+      <li><%= link_to p.value %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= link_to 'Adicionar intervalo de volume', new_volume_path %>
+<%= link_to 'Adicionar intervalo de peso', new_weight_path %>

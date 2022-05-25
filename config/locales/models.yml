@@ -4,6 +4,8 @@ pt-BR:
       carrier: Transportadora
       user: Usuário
       vehicle: Veículo
+      volume: Volume
+      weight: Peso
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -25,4 +27,10 @@ pt-BR:
         fabrication_year: "Ano de fabricação"
         max_capacity: "Capacidade máxima de carga"
         carrier_id: "Transportadora"  
+      volume:
+        min: "Volume mínimo"
+        max: "Volume máximo"  
+      weight:
+        min: "Peso mínimo"
+        max: "Peso máximo"  
       # will translate User attribute "login" as "Handle"

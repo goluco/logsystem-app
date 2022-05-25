@@ -4,4 +4,5 @@ class Carrier < ApplicationRecord
     validates :nif, numericality: true
     validates :nif, length: { is: 14 }
     validates :nif, uniqueness: true
+    has_many :prices
 end

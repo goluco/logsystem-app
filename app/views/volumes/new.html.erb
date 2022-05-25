@@ -1,0 +1,12 @@
+<h2>Adicionar intervalo de volumes</h2>
+
+<% if @volume.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @volume.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>

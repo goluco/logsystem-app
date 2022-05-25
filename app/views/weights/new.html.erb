@@ -1,0 +1,12 @@
+<h2>Adicionar intervalo de peso</h2>
+
+<% if @weight.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @weight.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>
