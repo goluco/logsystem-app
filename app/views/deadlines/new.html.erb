@@ -1,0 +1,12 @@
+<h2>Adicionar configuração de prazo</h2>
+
+<% if @deadline.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @deadline.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>

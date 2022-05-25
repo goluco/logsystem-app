@@ -1,0 +1,17 @@
+<%= form_with(model: @deadline) do |form| %>
+    <div>
+	  <%= form.label :working_days %>
+	  <%= form.number_field :working_days %>
+	</div>
+	<div>
+	  <%= form.label :min_distance %>
+	  <%= form.number_field :min_distance %>
+	</div>
+    <div>
+	  <%= form.label :max_distance %>
+	  <%= form.number_field :max_distance %>
+	</div>
+	<div>
+	  <%= form.submit 'Enviar' %>
+	</div>
+<% end %>

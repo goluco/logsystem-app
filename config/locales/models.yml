@@ -7,6 +7,7 @@ pt-BR:
       volume: Volume
       weight: Peso
       price: Taxa por KM
+      deadline: Prazo
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -40,4 +41,8 @@ pt-BR:
         value: "Taxa por KM"
         volume_id: "Volume"
         weight_id: "Peso"
+      deadline:
+        working_days: "Prazo (em dias úteis)"
+        min_distance: "De"
+        max_distance: "A"
       # will translate User attribute "login" as "Handle"

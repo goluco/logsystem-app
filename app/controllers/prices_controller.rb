@@ -10,7 +10,7 @@ class PricesController < ApplicationController
     end
 
     def create
-        @price = Price.new(price_params)
+      @price = Price.new(price_params)
       if @price.save()
         redirect_to root_path, notice: 'Taxa por KM cadastrada com sucesso'
       else

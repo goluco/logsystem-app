@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :prices
   resources :volumes, only: [:new, :create]
   resources :weights, only: [:new, :create]
+  resources :deadlines
 end
