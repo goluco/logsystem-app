@@ -1,7 +1,7 @@
 <h2>Configuração de prazos de <%= current_user.carrier.trade_name %></h2>
 
 <% if @deadlines.empty? %>
-  <p> Não existem preços cadastrados. </p>
+  <p> Não existem prazos cadastrados. </p>
 <% else %>
   <% @deadlines.each do |d| %>
     <p>Prazo: <%= d.working_days %> dias úteis | De: <%= d.min_distance %>KM | A: <%= d.max_distance %>KM</p> <br/>
@@ -9,3 +9,4 @@
 <% end %>
 
 <%= link_to 'Adicionar nova configuração de prazo', new_deadline_path %>
+

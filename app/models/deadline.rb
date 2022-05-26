@@ -1,3 +1,4 @@
 class Deadline < ApplicationRecord
-    validates :working_days, :min_distance, :max_distance, presence: true
+    belongs_to :carrier
+    validates :working_days, :min_distance, :max_distance, :carrier, presence: true
 end

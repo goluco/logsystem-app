@@ -1,6 +1,6 @@
 class DeadlinesController < ApplicationController
     def index
-        @deadlines = Deadline.all
+        @deadlines = Deadline.where(carrier_id: current_user.carrier.id)
     end
 
     def new
@@ -20,6 +20,6 @@ class DeadlinesController < ApplicationController
     private
 
     def deadline_params
-      params.require(:deadline).permit(:working_days, :min_distance, :max_distance)
+      params.require(:deadline).permit(:working_days, :min_distance, :max_distance, :carrier_id)
     end
 end

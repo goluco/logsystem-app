@@ -12,6 +12,10 @@
 	  <%= form.number_field :max_distance %>
 	</div>
 	<div>
+	  <%= form.label :carrier_id, "Transportadora" %>
+	  <%= form.collection_select :carrier_id, Carrier.where(trade_name: current_user.carrier.trade_name), :id, :trade_name %>
+	</div>
+	<div>
 	  <%= form.submit 'Enviar' %>
 	</div>
 <% end %>

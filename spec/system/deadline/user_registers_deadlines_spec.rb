@@ -28,6 +28,7 @@ describe 'Usuário configura deadlines' do
         fill_in 'Prazo (em dias úteis)', with: 2
         fill_in 'De', with: 0
         fill_in 'A', with: 100
+        select 'TTLog', from: 'Transportadora'
         click_on 'Enviar'
         #Assert
         expect(current_path).to eq(root_path)
