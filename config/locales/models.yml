@@ -17,6 +17,7 @@ pt-BR:
         address: "Endereço"
         city: "Cidade"
         state: "Estado"
+        status: "Status"
       user:
         name: "Nome"
         email: "E-mail"

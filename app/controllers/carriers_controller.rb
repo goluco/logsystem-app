@@ -1,9 +1,10 @@
 class CarriersController < ApplicationController 
     before_action :authenticate_admin!, only: [:edit, :update, :new, :create, :destroy]
-    before_action :set_carrier, only: [:edit, :update, :show]
+    before_action :set_carrier, only: [:edit, :update, :show, :deactivate, :activate]
 
     def index
-      @carriers = Carrier.all 
+      @carriers = Carrier.active 
+      @inactive_carriers = Carrier.inactive
     end
 
     def show
@@ -35,12 +36,22 @@ class CarriersController < ApplicationController
       end
     end
 
+    def deactivate
+      @carrier.inactive!
+      redirect_to carrier_path(@carrier.id)
+    end
+
+    def activate
+      @carrier.active!
+      redirect_to carrier_path(@carrier.id)
+    end
+
     private
     def set_carrier
       @carrier = Carrier.find(params[:id])
     end
 
     def carrier_params
-      params.require(:carrier).permit(:trade_name, :corporate_name, :domain, :nif, :address, :city, :state)
+      params.require(:carrier).permit(:trade_name, :corporate_name, :domain, :nif, :address, :city, :state, :status)
     end
 end

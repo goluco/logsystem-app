@@ -68,4 +68,36 @@ describe 'Administrador edita transportadora' do
         expect(page).to have_content('Domínio do e-mail não é válido')
         expect(page).to have_content('CNPJ não possui o tamanho esperado (14 caracteres)')
     end
+
+    it 'e desativa a transportadora' do
+        #Arrange
+        admin_gen = Admin.create!(email: 'administrador_generico@sistemadefrete.com.br', password: 'password')
+        carrier = Carrier.create!(trade_name: 'TTLog', corporate_name: 'Telene Carvalho', domain: '@ttlog.com.br', nif: 12345678901234, address: 'Linha Vermelha, 2543', city: 'Salvador', state: 'BA')
+        #Act
+        login_as(admin_gen,scope: :admin)
+        visit root_path
+        click_on 'Transportadoras disponíveis'
+        click_on 'TTLog'
+        click_on 'Desativar transportadora'
+        #Assert
+        expect(current_path).to eq(carrier_path(carrier.id))
+        expect(page).to have_button('Ativar transportadora')
+        expect(page).to have_content('Status: Inativa')
+    end
+
+    it 'e reativa a transportadora' do
+        #Arrange
+        admin_gen = Admin.create!(email: 'administrador_generico@sistemadefrete.com.br', password: 'password')
+        carrier = Carrier.create!(trade_name: 'TTLog', corporate_name: 'Telene Carvalho', domain: '@ttlog.com.br', nif: 12345678901234, address: 'Linha Vermelha, 2543', city: 'Salvador', state: 'BA', status: :inactive)
+        #Act
+        login_as(admin_gen, scope: :admin)
+        visit root_path
+        click_on 'Transportadoras disponíveis'
+        click_on 'TTLog'
+        click_on 'Ativar transportadora'
+        #Assert
+        expect(current_path).to eq(carrier_path(carrier.id))
+        expect(page).to have_button('Desativar transportadora')
+        expect(page).to have_content('Status: Ativa')
+    end
 end

@@ -6,7 +6,16 @@
 <h3>Endereço: <%= @carrier.address %> </h3>
 <h3>Cidade: <%= @carrier.city %> </h3>
 <h3>Estado: <%= @carrier.state %> </h3>
+<h3>Status: <%= I18n.translate(@carrier.status) %> </h3>
+
+<% if @carrier.active? %>
+  <%= button_to 'Desativar transportadora', deactivate_carrier_path, { method: 'patch' } %>
+<% else %>
+  <%= button_to 'Ativar transportadora', activate_carrier_path, { method: 'patch' } %>
+<% end %>
 
 <% if admin_signed_in? %>
   <%= link_to 'Editar', edit_carrier_path(@carrier.id) %>
 <% end %>
+
+

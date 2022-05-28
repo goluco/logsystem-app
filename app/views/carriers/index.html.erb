@@ -9,3 +9,15 @@
     </ul>
   <% end %>
 <% end %>
+
+<h2>Transportadoras desativadas</h2>
+
+<% if @inactive_carriers.empty? %>
+  <p>Não existem transportadoras cadastradas e inativas.</p>
+<% else %>
+  <% @inactive_carriers.each do |i| %>
+    <ul>
+      <li><%= link_to i.trade_name, carrier_path(i.id) %></li>
+    </ul>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<h3>Consulta de orçamento</h3>
+
+<% if @budgets.empty? %>
+  <p>Não existem transportadoras ativas para realizar este frete.</p>
+<% else %>
+  <% @budgets.each do |budget| %>
+    <ul>
+      <li>Transportadora: <%= budget.carrier.trade_name %> | Preço: R$<%= budget.value %> | Prazo: <%= budget.deadline %> dias úteis</li>
+    </ul>
+  <% end %>
+<% end %>

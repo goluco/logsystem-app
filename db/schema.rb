@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_114612) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_28_012309) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_114612) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "budgets", force: :cascade do |t|
+    t.integer "carrier_id", null: false
+    t.decimal "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "deadline"
+    t.index ["carrier_id"], name: "index_budgets_on_carrier_id"
+  end
+
   create_table "carriers", force: :cascade do |t|
     t.string "trade_name"
     t.string "corporate_name"
@@ -33,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_114612) do
     t.datetime "updated_at", null: false
     t.string "city"
     t.string "state"
+    t.integer "status", default: 0
   end
 
   create_table "deadlines", force: :cascade do |t|
@@ -43,6 +53,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_114612) do
     t.datetime "updated_at", null: false
     t.integer "carrier_id", null: false
     t.index ["carrier_id"], name: "index_deadlines_on_carrier_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "volume"
+    t.integer "product_weight"
+    t.string "delivery_address"
+    t.string "recipient_name"
+    t.integer "carrier_id", null: false
+    t.string "code"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carrier_id"], name: "index_orders_on_carrier_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -100,7 +123,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_114612) do
     t.string "name"
   end
 
+  add_foreign_key "budgets", "carriers"
   add_foreign_key "deadlines", "carriers"
+  add_foreign_key "orders", "carriers"
   add_foreign_key "prices", "carriers"
   add_foreign_key "prices", "volumes"
   add_foreign_key "prices", "weights"
