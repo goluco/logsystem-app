@@ -8,6 +8,7 @@ pt-BR:
       weight: Peso
       price: Taxa por KM
       deadline: Prazo
+      order: Ordem de serviço
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -46,4 +47,10 @@ pt-BR:
         working_days: "Prazo (em dias úteis)"
         min_distance: "De"
         max_distance: "A"
+      order:
+        volume: "Volume do produto (em m³)"
+        product_weight: "Peso do produto (em kg)"  
+        delivery_address: "Endereço de entrega"
+        recipient_name: "Nome do destinatário"
+        carrier_id: "Transportadora"
       # will translate User attribute "login" as "Handle"

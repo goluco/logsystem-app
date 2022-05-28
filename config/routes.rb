@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   resources :weights, only: [:new, :create]
   resources :deadlines
   resources :budgets, only: [:new, :create, :index, :show]
-  resources :orders
+  resources :orders do
+    patch :accept, on: :member
+    patch :refuse, on: :member
+    patch :finalize, on: :member
+  end
 end

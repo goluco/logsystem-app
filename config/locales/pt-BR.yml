@@ -2,3 +2,7 @@ pt-BR:
   hello: "Olá mundo"
   inactive: "Inativa"
   active: "Ativa"
+  pending_acceptance: "Pendente de aceite"
+  accepted: "Pedido aceito"
+  refused: "Pedido recusado"
+  finished: "Pedido entregue e finalizado"

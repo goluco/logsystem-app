@@ -1,0 +1,18 @@
+<h3>Detalhes do Pedido</h3>
+
+<ul>
+  <li>Volume: <%= @order.volume %>m³</li>
+  <li>Peso do produto: <%= @order.product_weight %>kg</li>
+  <li>Endereço de entrega: <%= @order.delivery_address %></li>
+  <li>Nome do destinatário: <%= @order.recipient_name %>m³</li>
+  <li>Status: <%= I18n.translate(@order.status) %></li>
+  <li>Código para rastreio: <%= @order.code %></li>
+  <% if user_signed_in? %>
+    <% if @order.pending_acceptance? %>
+      <%= button_to 'Aceitar pedido', accept_order_path, { method: 'patch' } %>
+      <%= button_to 'Recusar pedido', refuse_order_path, { method: 'patch' } %>
+    <% elsif @order.accepted? %>
+      <%= button_to 'Finalizar pedido', finalize_order_path, { method: 'patch' } %>
+    <% end %>
+  <% end %>
+</ul>

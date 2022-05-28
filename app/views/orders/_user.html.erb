@@ -1,0 +1,5 @@
+<h1>Visualização de pedidos</h1>
+
+<% @orders_user.each do |order| %>
+  <p>Pedido para: <%= order.delivery_address %> | <%= order.recipient_name %> | <%= link_to 'Ver detalhes', order_path(order.id) %> </p>
+<% end %>

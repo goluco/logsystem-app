@@ -1,9 +1,5 @@
-<h3>Gerenciamento de Ordens de Serviço</h3>
-
-<%= link_to 'Criar nova ordem de serviço', new_order_path %>
-
-<h4>Pedidos aguardando aceite</h4>
-
-<h4>Pedidos aceitos e a caminho</h4>
-
-<h4>Pedidos recusados</h4>
+<% if admin_signed_in? %>
+  <%= render 'admin' %>
+<% elsif user_signed_in? %>
+  <%= render 'user' %>
+<% end %>

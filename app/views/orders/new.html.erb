@@ -1,0 +1,12 @@
+<h3>Criar novo pedido. Preencha os campos abaixo</h3>
+
+<% if @order.errors.any? %>
+  <p>Verifique os erros abaixo</p>
+  <ul>
+    <% @order.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form' %>

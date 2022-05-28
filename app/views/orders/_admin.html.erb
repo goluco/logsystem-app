@@ -1,0 +1,36 @@
+<h3>Gerenciamento de Ordens de Serviço</h3>
+
+<%= link_to 'Criar nova ordem de serviço', new_order_path %>
+
+<h4>Pedidos aguardando aceite</h4>
+
+<% @orders_awaiting.each do |order| %>
+  <ul>
+    <li>Pedido para: <%= order.delivery_address %> | <%= order.recipient_name %> | <%= order.carrier.trade_name %> </li>
+  </ul>
+<% end %>
+
+<h4>Pedidos aceitos e a caminho</h4>
+
+<% @orders_accepted.each do |order| %>
+  <ul>
+    <li>Pedido para: <%= order.delivery_address %> | <%= order.recipient_name %> | <%= order.carrier.trade_name %> </li>
+  </ul>
+<% end %>
+
+<h4>Pedidos recusados</h4>
+
+<% @orders_refused.each do |order| %>
+  <ul>
+    <li>Pedido para: <%= order.delivery_address %> | <%= order.recipient_name %> | <%= order.carrier.trade_name %> </li>
+  </ul>
+<% end %>
+
+<h4>Pedidos finalizados</h4>
+
+<% @orders_delivered.each do |order| %>
+  <ul>
+    <li>Pedido para: <%= order.delivery_address %> | <%= order.recipient_name %> | <%= order.carrier.trade_name %> </li>
+  </ul>
+<% end %>
+
