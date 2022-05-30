@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
   def search
     unique_code = params[:code]
     @order = Order.where(code: unique_code).last
-    @infolog = nil
     if @order != nil
       if @order.infolog_id == nil
         @infolog = Infolog.where(order_id: @order.id).last
+        @order.infolog_id = @infolog.id
       else
         @infolog = Infolog.find(@order.infolog_id)
       end
@@ -72,8 +72,12 @@ class OrdersController < ApplicationController
     private
 
     def set_infolog
-      infolog = Infolog.create(coordinates: "Ainda sem atualizações", date: "Ainda sem atualizações", time: "Ainda sem atualizações", order_id: @order.id)
-      @order.infolog_id = infolog.id
+      if @order.infolog_id == nil
+        @infolog = Infolog.where(order_id: @order.id).last
+        @order.infolog_id = @infolog.id
+      else
+        @infolog = Infolog.find(@order.infolog_id)
+      end
     end
 
     def set_order

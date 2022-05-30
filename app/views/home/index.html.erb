@@ -6,7 +6,7 @@
 <% elsif user_signed_in? %>
   <%= render 'user' %>
 <% else %>
-  <%= form_with(url: search_orders_path, method: :get) do |f| %>
+  <%= form_with(url: search_orders_path, method: :get, remote: false) do |f| %>
   <div>
     <%= f.label :code, "Rastreamento de Entrega: insira o código do pedido" %>
     <%= f.text_field :code %>

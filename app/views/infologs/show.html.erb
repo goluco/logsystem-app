@@ -4,4 +4,6 @@
 <h3>Data de atualização: <%= @infolog.date %> </h3>
 <h3>Horário de atualização: <%= @infolog.time %> </h3>
 
-<%= link_to 'Adicionar atualização de rota', edit_infolog_path(@infolog.id) %>
+<% if user_signed_in? %>
+  <%= link_to 'Adicionar atualização de rota', edit_infolog_path(@infolog.id) %>
+<% end %>

@@ -2,11 +2,9 @@
   <p>Não existem pedidos cadastrados com este código</p>
 <% else %>
   <h2>Última atualização do pedido</h2>
-
-  <h2>Última atualização de coordenadas: <%= @infolog.coordinates %> </h2>
-  <h3>Data de atualização: <%= @infolog.date %> </h3>
-  <h3>Horário de atualização: <%= @infolog.time %> </h3>
-
-<%= link_to 'Adicionar atualização de rota', edit_infolog_path(@infolog.id) %>
+  <p>Status: <%= I18n.translate(@order.status) %> </p>
+  <p>Última atualização de coordenadas: <%= @infolog.coordinates %> </p>
+  <p>Data de atualização: <%= @infolog.date %> </p>
+  <p>Horário de atualização: <%= @infolog.time %> </p>
 <% end %>
 
