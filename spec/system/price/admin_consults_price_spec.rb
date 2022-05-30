@@ -21,8 +21,9 @@ describe 'Administrador faz orçamento' do
         #Act
         login_as(admin_gen, scope: :admin)
         visit root_path
+        click_on 'Gerenciar orçamentos'
         #Assert
-        expect(page).to have_content('Fazer orçamento de entrega. Preencha os campos abaixo')
+        expect(page).to have_content('Orçamento de entrega. Preencha os campos abaixo')
         expect(page).to have_field('Peso do Produto (em Kg)')
         expect(page).to have_field('Altura do Produto (em m)')
         expect(page).to have_field('Largura do Produto (em m)')
@@ -57,6 +58,7 @@ describe 'Administrador faz orçamento' do
          #Act
          login_as(admin_gen, scope: :admin)
          visit root_path
+         click_on 'Gerenciar orçamentos'
          fill_in 'Peso do Produto (em Kg)', with: 15
          fill_in 'Altura do Produto (em m)', with: 1
          fill_in 'Largura do Produto (em m)', with: 0.5
@@ -95,6 +97,7 @@ describe 'Administrador faz orçamento' do
          #Act
          login_as(admin_gen, scope: :admin)
          visit root_path
+         click_on 'Gerenciar orçamentos'
          fill_in 'Peso do Produto (em Kg)', with: 35
          fill_in 'Altura do Produto (em m)', with: 1
          fill_in 'Largura do Produto (em m)', with: 0.5
@@ -104,5 +107,24 @@ describe 'Administrador faz orçamento' do
          #Assert
          expect(current_path).to eq(search_prices_path)
          expect(page).to have_content('Não existem transportadoras ativas para realizar este frete.')
+    end
+
+    it 'e visualiza os orçamentos realizados anteriormente' do
+        #Arrange
+        admin_gen = Admin.create!(email: 'administrador_generico@sistemadefrete.com.br', password: 'password')
+        first_carrier = Carrier.create!(trade_name: 'TTLog', corporate_name: 'Telene Carvalho', domain: '@ttlog.com.br', nif: 12345678901234, address: 'Linha Vermelha, 2543', city: 'Salvador', state: 'BA')
+        second_carrier = Carrier.create!(trade_name: 'ARLog', corporate_name: 'Lucas Silva e Silva', domain: '@arlog.com.br', nif: 23456789012345, address: 'Rua Scuvero, 282', city: 'São Paulo', state: 'SP')
+        budget_one = Budget.create!(carrier: first_carrier, value: 120.0, deadline: 5)
+        budget_two = Budget.create!(carrier: first_carrier, value: 150.0, deadline: 3)
+        budget_three = Budget.create!(carrier: second_carrier, value: 190.0, deadline: 4)
+        #Act
+        login_as(admin_gen, scope: :admin)
+        visit root_path
+        click_on 'Gerenciar orçamentos'
+        #Assert
+        expect(page).to have_content('Orçamentos anteriores')
+        expect(page).to have_link('TTLog | R$ 120.0 | 5 dias úteis')
+        expect(page).to have_link('TTLog | R$ 150.0 | 3 dias úteis')
+        expect(page).to have_link('ARLog | R$ 190.0 | 4 dias úteis')
     end
 end

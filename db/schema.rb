@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_28_012309) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_29_230423) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -55,6 +55,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_012309) do
     t.index ["carrier_id"], name: "index_deadlines_on_carrier_id"
   end
 
+  create_table "infologs", force: :cascade do |t|
+    t.string "coordinates"
+    t.string "date"
+    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_id", null: false
+    t.index ["order_id"], name: "index_infologs_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.decimal "volume"
     t.integer "product_weight"
@@ -65,7 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_012309) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "product_address"
+    t.string "product_sku"
+    t.integer "distance"
+    t.integer "vehicle_id"
+    t.integer "infolog_id"
     t.index ["carrier_id"], name: "index_orders_on_carrier_id"
+    t.index ["infolog_id"], name: "index_orders_on_infolog_id"
+    t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -125,7 +142,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_012309) do
 
   add_foreign_key "budgets", "carriers"
   add_foreign_key "deadlines", "carriers"
+  add_foreign_key "infologs", "orders"
   add_foreign_key "orders", "carriers"
+  add_foreign_key "orders", "infologs"
+  add_foreign_key "orders", "vehicles"
   add_foreign_key "prices", "carriers"
   add_foreign_key "prices", "volumes"
   add_foreign_key "prices", "weights"

@@ -9,11 +9,23 @@
 	</div>
 	<div>
 	  <%= form.label :delivery_address %>
-	  <%= form.number_field :delivery_address %>
+	  <%= form.text_field :delivery_address %>
 	</div>
 	<div>
 	  <%= form.label :recipient_name %>
 	  <%= form.text_field :recipient_name %>
+	</div>
+	<div>
+	  <%= form.label :product_sku %>
+	  <%= form.text_field :product_sku %>
+	</div>
+	<div>
+	  <%= form.label :product_address %>
+	  <%= form.text_field :product_address %>
+	</div>
+	<div>
+	  <%= form.label :distance %>
+	  <%= form.number_field :distance %>
 	</div>
 	<div>
 	  <%= form.label :carrier_id, "Transportadora" %>

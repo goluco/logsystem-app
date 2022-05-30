@@ -7,12 +7,20 @@
   <li>Nome do destinatário: <%= @order.recipient_name %>m³</li>
   <li>Status: <%= I18n.translate(@order.status) %></li>
   <li>Código para rastreio: <%= @order.code %></li>
-  <% if user_signed_in? %>
-    <% if @order.pending_acceptance? %>
-      <%= button_to 'Aceitar pedido', accept_order_path, { method: 'patch' } %>
-      <%= button_to 'Recusar pedido', refuse_order_path, { method: 'patch' } %>
-    <% elsif @order.accepted? %>
-      <%= button_to 'Finalizar pedido', finalize_order_path, { method: 'patch' } %>
-    <% end %>
+  <% if @order.vehicle_id != nil %>
+    <li>Veículo: <%= Vehicle.find(@order.vehicle_id) %></li>
   <% end %>
+  <li> <%= link_to "Atualização de coordenadas", infolog_path(@order.infolog_id) %></li>
 </ul>
+
+<% if user_signed_in? %>
+  <% if @order.pending_acceptance? %>
+    <%= link_to 'Clique aqui para designar um veículo antes de aceitar o pedido', edit_order_path(@order.id) %>
+    <%= button_to 'Aceitar pedido', accept_order_path, { method: 'patch' } %>
+    <%= button_to 'Recusar pedido', refuse_order_path, { method: 'patch' } %>    
+  <% elsif @order.accepted? %>
+    <%= button_to 'Finalizar pedido', finalize_order_path, { method: 'patch' } %>
+    <%= link_to 'Adicionar atualização de rota', edit_infolog_path(@order.infolog_id) %>
+  <% end %>
+<% end %>
+

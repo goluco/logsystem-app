@@ -1,0 +1,8 @@
+<h3>Detalhes do orçamento</h3>
+
+<ul>
+  <li> Valor: R$<%= @budget.value %> </li>
+  <li> Prazo: <%= @budget.deadline %> dias úteis </li>
+  <li> Transportadora: <%= @budget.carrier.trade_name %> </li>
+  <li> Data do orçamento: <%= @budget.created_at %> </li>
+</ul>

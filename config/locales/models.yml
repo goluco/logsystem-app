@@ -9,6 +9,7 @@ pt-BR:
       price: Taxa por KM
       deadline: Prazo
       order: Ordem de serviço
+      infolog: Atualização da rota
     attributes:
       carrier:
         trade_name: "Nome fantasia"
@@ -53,4 +54,11 @@ pt-BR:
         delivery_address: "Endereço de entrega"
         recipient_name: "Nome do destinatário"
         carrier_id: "Transportadora"
+        product_sku: "Código do produto"
+        product_address: "Endereço de retirada do produto"
+        distance: "Distância"
+      infolog:
+        coordinates: "Coordenadas geográficas"
+        date: "Data de atualização"
+        time: "Horário de atualização"
       # will translate User attribute "login" as "Handle"

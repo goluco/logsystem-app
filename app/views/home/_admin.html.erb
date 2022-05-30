@@ -3,30 +3,7 @@
 <h3><%= link_to 'Adicionar transportadora', new_carrier_path %></h3>
 <h3><%= link_to 'Transportadoras disponíveis', carriers_path %></h3>
 <h3><%= link_to 'Gerenciar ordens de serviço', orders_path %></h3>
-<h3>Fazer orçamento de entrega. Preencha os campos abaixo:</h3>
-<%= form_with(url: search_prices_path, method: :get) do |f| %>
-  <div>
-    <%= f.label :product_weight, "Peso do Produto (em Kg)" %>
-    <%= f.number_field :product_weight %>
-  </div>
-  <div>
-    <%= f.label :product_height, "Altura do Produto (em m)" %>
-    <%= f.text_field :product_height %>
-  </div>
-  <div>
-    <%= f.label :product_width, "Largura do Produto (em m)" %>
-    <%= f.text_field :product_width %>
-  </div>
-  <div>
-    <%= f.label :product_depth, "Profundidade do Produto (em m)" %>
-    <%= f.text_field :product_depth %>
-  </div>
-  <div>
-    <%= f.label :distance, "Distância a ser percorrida (em km)" %>
-    <%= f.number_field :distance %>
-  </div>
-  <div>
-    <%= f.submit 'Enviar' %>
-  </div>
-<% end %>
+<h3><%= link_to 'Gerenciar orçamentos', budgets_path %></h3>
+
+
 

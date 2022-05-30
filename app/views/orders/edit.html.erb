@@ -1,0 +1,9 @@
+<%= form_with(model: @order) do |form| %>
+	<div>
+	  <%= form.label :vehicle_id, "Designar veículo" %>
+	  <%= form.collection_select :vehicle_id, Vehicle.where(carrier: @order.carrier), :id, :model %>
+	</div>
+	<div>
+	  <%= form.submit 'Enviar' %>
+	</div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_with(model: @infolog) do |form| %>
+    <div>
+	  <%= form.label :coordinates %>
+	  <%= form.text_field :coordinates %>
+	</div>
+	<div>
+	  <%= form.label :date %>
+	  <%= form.text_field :date %>
+	</div>
+	<div>
+	  <%= form.label :time %>
+	  <%= form.text_field :time %>
+	</div>
+    <div>
+	  <%= form.label :order_id, "Pedido" %>
+	  <%= form.collection_select :order_id, Order.accepted.where(carrier: current_user.carrier), :id, :delivery_address %>
+	</div>
+	<div>
+	  <%= form.submit 'Enviar' %>
+	</div>
+<% end %>

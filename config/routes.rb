@@ -21,4 +21,5 @@ Rails.application.routes.draw do
     patch :refuse, on: :member
     patch :finalize, on: :member
   end
+  resources :infologs
 end

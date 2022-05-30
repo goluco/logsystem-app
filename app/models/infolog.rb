@@ -1,0 +1,2 @@
+class Infolog < ApplicationRecord
+end

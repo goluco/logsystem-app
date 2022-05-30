@@ -1,0 +1,40 @@
+<h3>Orçamentos anteriores</h3>
+
+<% if @budgets.empty? %>
+  <p> Ainda não foram realizados orçamentos </p>
+<% else %>
+  <% @budgets.each do |b| %>
+    <ul>
+      <li><%= link_to "#{b.carrier.trade_name} | R$ #{b.value} | #{b.deadline} dias úteis", budget_path(b.id) %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+
+<h3>Orçamento de entrega. Preencha os campos abaixo:</h3>
+
+<%= form_with(url: search_prices_path, method: :get) do |f| %>
+  <div>
+    <%= f.label :product_weight, "Peso do Produto (em Kg)" %>
+    <%= f.number_field :product_weight %>
+  </div>
+  <div>
+    <%= f.label :product_height, "Altura do Produto (em m)" %>
+    <%= f.text_field :product_height %>
+  </div>
+  <div>
+    <%= f.label :product_width, "Largura do Produto (em m)" %>
+    <%= f.text_field :product_width %>
+  </div>
+  <div>
+    <%= f.label :product_depth, "Profundidade do Produto (em m)" %>
+    <%= f.text_field :product_depth %>
+  </div>
+  <div>
+    <%= f.label :distance, "Distância a ser percorrida (em km)" %>
+    <%= f.number_field :distance %>
+  </div>
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>
