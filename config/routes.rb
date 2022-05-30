@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     patch :accept, on: :member
     patch :refuse, on: :member
     patch :finalize, on: :member
+    collection do
+      get 'search'
+    end
   end
   resources :infologs
 end

@@ -1,6 +1,17 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :accept, :refuse, :finalize] 
   before_action :set_infolog, only: [:show, :edit, :update] 
+
+  def search
+    unique_code = params[:code]
+    @order = Order.where(code: unique_code).last
+    @infolog = nil
+    if @order.infolog_id == nil
+      @infolog = Infolog.where(order_id: @order.id).last
+    else
+      @infolog = Infolog.find(@order.infolog_id)
+    end
+  end
   
   def index
         @orders_awaiting = Order.pending_acceptance
