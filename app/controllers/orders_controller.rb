@@ -6,10 +6,12 @@ class OrdersController < ApplicationController
     unique_code = params[:code]
     @order = Order.where(code: unique_code).last
     @infolog = nil
-    if @order.infolog_id == nil
-      @infolog = Infolog.where(order_id: @order.id).last
-    else
-      @infolog = Infolog.find(@order.infolog_id)
+    if @order != nil
+      if @order.infolog_id == nil
+        @infolog = Infolog.where(order_id: @order.id).last
+      else
+        @infolog = Infolog.find(@order.infolog_id)
+      end
     end
   end
   
