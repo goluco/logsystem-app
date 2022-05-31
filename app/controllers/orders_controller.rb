@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:edit, :accept, :finalize, :refuse, :show]
   before_action :set_order, only: [:show, :edit, :update, :accept, :refuse, :finalize] 
   before_action :set_infolog, only: [:show, :edit, :update] 
 
@@ -15,7 +17,7 @@ class OrdersController < ApplicationController
     end
   end
   
-  def index
+    def index
         @orders_awaiting = Order.pending_acceptance
         @orders_accepted = Order.accepted
         @orders_refused = Order.refused
@@ -26,6 +28,12 @@ class OrdersController < ApplicationController
     end
 
     def show
+      @vehicle = nil
+      if @order.vehicle_id != nil
+        @vehicle = Vehicle.find(@order.vehicle_id)
+      else
+        @vehicle = "Ainda não há veículos cadastrados para este pedido"
+      end
     end
 
     def new
@@ -85,6 +93,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:volume, :product_weight, :delivery_address, :recipient_name, :carrier_id, :product_sku, :product_address, :distance, :vehicle, :infolog_id)
+      params.require(:order).permit(:volume, :product_weight, :delivery_address, :recipient_name, :carrier_id, :product_sku, :product_address, :distance, :vehicle_id, :infolog_id)
     end
 end

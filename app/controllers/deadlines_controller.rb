@@ -1,4 +1,6 @@
 class DeadlinesController < ApplicationController
+    before_action :authenticate_user!
+
     def index
         @deadlines = Deadline.where(carrier_id: current_user.carrier.id)
     end

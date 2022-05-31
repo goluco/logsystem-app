@@ -14,16 +14,16 @@
     <%= yield %>
     <header>
       <nav>
-        <%= link_to 'Início', root_path %>
         <% if user_signed_in? %>
-          <%= current_user.email %> |
-          <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
+          <p><%= link_to 'Início', root_path %></p> <br/>
+          <%= current_user.email %> 
+          <p class='logout_button'><%= button_to 'Sair', destroy_user_session_path, method: :delete %><p> 
         <% elsif admin_signed_in? %>
           <%= current_admin.email %> | 
           <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
         <% else %>
-          <%= link_to 'Entrar como admin', new_admin_session_path %>
-          <%= link_to 'Entrar como usuário', new_user_session_path %>
+          <p class='login_button'><%= link_to 'Entrar como admin', new_admin_session_path %> |
+          <%= link_to 'Entrar como usuário', new_user_session_path %></p>
         <% end %>
       </nav>
     </header>

@@ -44,6 +44,7 @@ pt-BR:
         value: "Taxa por KM"
         volume_id: "Volume"
         weight_id: "Peso"
+        min_charge: "Valor mínimo de cobrança"
       deadline:
         working_days: "Prazo (em dias úteis)"
         min_distance: "De"

@@ -27,7 +27,13 @@ class PricesController < ApplicationController
         @prices = Price.where(carrier_id: carrier)
         @prices.each do |price|
           if (volume <= Volume.find(price.volume_id).max) && (volume >= Volume.find(price.volume_id).min) && (params[:product_weight].to_i <= Weight.find(price.weight_id).max) && (params[:product_weight].to_i >= Weight.find(price.weight_id).min)
-            value = price.value * params[:distance].to_i
+            value = nil
+            cost = price.value * params[:distance].to_i
+            if price.min_charge != nil && cost < price.min_charge
+              value = price.min_charge
+            else
+              value = cost
+            end
             deadline = nil
             @deadlines = Deadline.where(carrier: carrier)
             @deadlines.each do |d|
@@ -40,13 +46,12 @@ class PricesController < ApplicationController
         end
       end
     end
-
     private
     def set_price
       @price = Carrier.find(params[:id])
     end
 
     def price_params
-      params.require(:price).permit(:value, :volume_id, :weight_id, :carrier_id)
+      params.require(:price).permit(:value, :volume_id, :weight_id, :carrier_id, :min_charge)
     end
 end

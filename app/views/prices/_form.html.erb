@@ -1,7 +1,11 @@
 <%= form_with(model: @price) do |form| %>
-  <div>
+    <div>
 	  <%= form.label :value %>
 	  <%= form.text_field :value %>
+	</div>
+	<div>
+	  <%= form.label :min_charge %>
+	  <%= form.text_field :min_charge %>
 	</div>
 	<div>
 	  <%= form.label :volume_id %>

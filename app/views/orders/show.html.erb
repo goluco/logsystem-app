@@ -8,7 +8,9 @@
   <li>Status: <%= I18n.translate(@order.status) %></li>
   <li>Código para rastreio: <%= @order.code %></li>
   <% if @order.vehicle_id != nil %>
-    <li>Veículo: <%= Vehicle.find(@order.vehicle_id) %></li>
+    <li>Veículo: <%= @vehicle.model %></li>
+  <% else %>
+    <li>Veículo: <%= @vehicle %> </li>
   <% end %>
   <li><%= link_to "Atualização de coordenadas", infolog_path(@order.infolog_id) %></li>
 </ul>

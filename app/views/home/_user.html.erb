@@ -1,6 +1,6 @@
-<h2>Ambiente de configuração de preços, prazos, veículos e ordens de serviço da transportadora <%= current_user.carrier.trade_name %></h2>
+<h3>Ambiente de configuração de preços, prazos, veículos e ordens de serviço da transportadora <%= current_user.carrier.trade_name %></h3>
 
 <%= link_to 'Cadastrar veículo', new_vehicle_path %><br/>
 <%= link_to 'Configurar preços', prices_path %><br/>
-<%= link_to "Configuração de prazos", deadlines_path %>
+<%= link_to "Configuração de prazos", deadlines_path %> <br/>
 <%= link_to 'Visualizar pedidos', orders_path %>

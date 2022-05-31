@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+ .track_search {
+     margin-top: 1%;
+     margin-left: 0;
+     position: center;
+ }
+
+ header {
+     position: fixed;
+ }
+
+ .carrier_menu {
+     position: left;
+     margin-bottom: 1%;
+     margin-left: 0;
+ }
+
+ .login_button {
+     margin-top: 2%;
+     margin-left: 0;
+     margin-bottom: 0;
+ }

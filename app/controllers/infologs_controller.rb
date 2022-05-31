@@ -1,7 +1,9 @@
 class InfologsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_infolog
 
     def show
+      @order = Order.find(@infolog.order_id)
     end
 
     def edit

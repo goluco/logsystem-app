@@ -1,9 +1,9 @@
 <h2>Última atualização do pedido</h2>
 
-<h2>Última atualização de coordenadas: <%= @infolog.coordinates %> </h2>
-<h3>Data de atualização: <%= @infolog.date %> </h3>
-<h3>Horário de atualização: <%= @infolog.time %> </h3>
+<h4>Última atualização de coordenadas: <%= @infolog.coordinates %> </h4>
+<p>Data de atualização: <%= @infolog.date %> </p>
+<p>Horário de atualização: <%= @infolog.time %> </p>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && @order.accepted? %>
   <%= link_to 'Adicionar atualização de rota', edit_infolog_path(@infolog.id) %>
 <% end %>
